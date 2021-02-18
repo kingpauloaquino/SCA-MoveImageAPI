@@ -68,19 +68,19 @@ class MoveImage {
 }
 
 if(!IsSet($_GET["yard_from"])) {
-    echo json_encode(["status" => 404, "message" => "No Yard From UID"]);
+    echo json_encode(["status" => 404.1, "message" => "No Yard From UID"]);
     exit();
 }
 if (!isset($_GET["yard_to"])) {
-    echo json_encode(["status" => 404, "message" => "No Yard To UID"]);
+    echo json_encode(["status" => 404.2, "message" => "No Yard To UID"]);
     exit();
 }
 if (!isset($_GET["box_from"])) {
-    echo json_encode(["status" => 404, "message" => "No Box From UID"]);
+    echo json_encode(["status" => 404.3, "message" => "No Box From UID"]);
     exit();
 }
 if (!isset($_GET["box_to"])) {
-    echo json_encode(["status" => 404, "message" => "No Box To UID"]);
+    echo json_encode(["status" => 404.4, "message" => "No Box To UID"]);
     exit();
 }
 
@@ -96,11 +96,11 @@ $destinationFullPath = $image->getFullPath($yard_to, $box_to, false);
 
 $res = $image->check_dir($originFullPath);
 if(!$res) {
-    echo json_encode(["status" => 404, "message" => "[Origin] - Yard ID and Box ID did not found."]);
+    echo json_encode(["status" => 404.5, "message" => "[Origin] - Yard ID and Box ID did not found."]);
     exit();
 }
 
 // var_dump($originFullPath);
 // var_dump($destinationFullPath);
 $image->recurse_copy($originFullPath, $destinationFullPath);
-echo json_encode(["status" => 404, "message" => "All images should be copied, and you should see them now."]);
+echo json_encode(["status" => 200, "message" => "All images should be copied, and you should see them now."]);
